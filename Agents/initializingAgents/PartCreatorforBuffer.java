@@ -145,83 +145,83 @@ public class PartCreatorforBuffer {
 			productionPlan.add(new PhysicalProperty("S1", 100));
 			
 			HashSet<PhysicalProperty> set2 = new HashSet<PhysicalProperty>();
-			set2.add(new PhysicalProperty("S2", 50));
+			set2.add(new PhysicalProperty("S2", 120));
 			productionPlan.addNewSet(set2);
 			
 			HashSet<PhysicalProperty> set3 = new HashSet<PhysicalProperty>();
-			set3.add(new PhysicalProperty("S3", 250));
+			set3.add(new PhysicalProperty("S3", 100));
 			productionPlan.addNewSet(set3);
 			
 			HashSet<PhysicalProperty> set4 = new HashSet<PhysicalProperty>();
-			set4.add(new PhysicalProperty("S4", 200.5));
+			set4.add(new PhysicalProperty("S4", 80));
 			productionPlan.addNewSet(set4);
 			
 			HashSet<PhysicalProperty> set5 = new HashSet<PhysicalProperty>();
-			set5.add(new PhysicalProperty("S5", 100));
+			set5.add(new PhysicalProperty("S5", 150));
 			productionPlan.addNewSet(set5);
 			
 			HashSet<PhysicalProperty> set6 = new HashSet<PhysicalProperty>();
-			set6.add(new PhysicalProperty("S6", 80));
+			set6.add(new PhysicalProperty("S6", 200));
 			productionPlan.addNewSet(set6);
 			
 			HashSet<PhysicalProperty> end = new HashSet<PhysicalProperty>();
-			end.add(new PhysicalProperty("End", 175));
+			end.add(new PhysicalProperty("End", 250));
 			productionPlan.addNewSet(end);
 		}
 		
 		else if (partType == 'b'){
-			productionPlan.add(new PhysicalProperty("S2", 50));
+			productionPlan.add(new PhysicalProperty("S2", 95));
 			
 			HashSet<PhysicalProperty> set2 = new HashSet<PhysicalProperty>();
-			set2.add(new PhysicalProperty("S1", 20));
+			set2.add(new PhysicalProperty("S1", 90));
 			productionPlan.addNewSet(set2);
 			
 			HashSet<PhysicalProperty> set3 = new HashSet<PhysicalProperty>();
-			set3.add(new PhysicalProperty("S3", 15.9));
+			set3.add(new PhysicalProperty("S3", 110));
 			productionPlan.addNewSet(set3);
 			
 			HashSet<PhysicalProperty> set4 = new HashSet<PhysicalProperty>();
-			set4.add(new PhysicalProperty("S5", 40.1));
+			set4.add(new PhysicalProperty("S5", 130));
 			productionPlan.addNewSet(set4);
 			
 			HashSet<PhysicalProperty> set5 = new HashSet<PhysicalProperty>();
-			set5.add(new PhysicalProperty("S4", 30.7));
+			set5.add(new PhysicalProperty("S4", 110));
 			productionPlan.addNewSet(set5);
 			
 			HashSet<PhysicalProperty> set6 = new HashSet<PhysicalProperty>();
-			set6.add(new PhysicalProperty("S6", 24.9));
+			set6.add(new PhysicalProperty("S6", 130));
 			productionPlan.addNewSet(set6);
 			
 			HashSet<PhysicalProperty> end = new HashSet<PhysicalProperty>();
-			end.add(new PhysicalProperty("End", 67.4));
+			end.add(new PhysicalProperty("End", 70));
 			productionPlan.addNewSet(end);
 		}
 		
 		else if (partType == 'c'){
-			productionPlan.add(new PhysicalProperty("S4", 500));
+			productionPlan.add(new PhysicalProperty("S4", 60));
 			
 			HashSet<PhysicalProperty> set2 = new HashSet<PhysicalProperty>();
-			set2.add(new PhysicalProperty("S5", 400));
+			set2.add(new PhysicalProperty("S5", 90));
 			productionPlan.addNewSet(set2);
 			
 			HashSet<PhysicalProperty> set3 = new HashSet<PhysicalProperty>();
-			set3.add(new PhysicalProperty("S6", 640));
+			set3.add(new PhysicalProperty("S6", 199));
 			productionPlan.addNewSet(set3);
 			
 			HashSet<PhysicalProperty> set4 = new HashSet<PhysicalProperty>();
-			set4.add(new PhysicalProperty("S1", 500));
+			set4.add(new PhysicalProperty("S1", 50));
 			productionPlan.addNewSet(set4);
 			
 			HashSet<PhysicalProperty> set5 = new HashSet<PhysicalProperty>();
-			set5.add(new PhysicalProperty("S2", 1000));
+			set5.add(new PhysicalProperty("S2", 65));
 			productionPlan.addNewSet(set5);
 			
 			HashSet<PhysicalProperty> set6 = new HashSet<PhysicalProperty>();
-			set6.add(new PhysicalProperty("S3", 390));
+			set6.add(new PhysicalProperty("S3", 70));
 			productionPlan.addNewSet(set6);
 			
 			HashSet<PhysicalProperty> end = new HashSet<PhysicalProperty>();
-			end.add(new PhysicalProperty("End", 300));
+			end.add(new PhysicalProperty("End", 102));
 			productionPlan.addNewSet(end);
 		}
 		

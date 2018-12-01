@@ -13,6 +13,11 @@ public class PhysicalProperty {
 		this.processCompleted = null;
 	}
 	
+	public PhysicalProperty(String processCompleted){
+		this.point = null;
+		this.processCompleted = processCompleted;
+	}
+	
 	public PhysicalProperty(String processCompleted, double estimatedTime){
 		this.point = null;
 		this.processCompleted = processCompleted;
