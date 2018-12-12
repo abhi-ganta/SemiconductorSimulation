@@ -81,7 +81,7 @@ public class MachineAgent implements ResourceAgent{
 	
 	@Override
 	public void teamQuery(ProductAgent productAgent, PhysicalProperty desiredProperty, ProductState currentNode, 
-			int maxTime, DirectedSparseGraph<ProductState,ResourceEvent> bid, int currentTime) {
+			double maxTime, DirectedSparseGraph<ProductState,ResourceEvent> bid, int currentTime) {
 		
 		if (this.machine.getTimeLeft()>30000){
 			ResourceAgentHelper rah = new ResourceAgentHelper();

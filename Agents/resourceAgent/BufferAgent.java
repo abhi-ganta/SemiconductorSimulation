@@ -70,7 +70,7 @@ public class BufferAgent implements ResourceAgent {
 
 	@Override
 	public void teamQuery(ProductAgent productAgent, PhysicalProperty desiredProperty, ProductState currentNode, 
-			int maxTime, DirectedSparseGraph<ProductState,ResourceEvent> bid, int currentTime) {
+			double maxTime, DirectedSparseGraph<ProductState,ResourceEvent> bid, int currentTime) {
 		
 		new ResourceAgentHelper().teamQuery(productAgent, desiredProperty, currentNode, maxTime, bid,
 				currentTime, this, neighbors, tableNeighborNode, bufferCapabilities, weightTransformer);

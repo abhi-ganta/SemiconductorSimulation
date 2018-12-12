@@ -34,7 +34,7 @@ public class ResourceAgentHelper {
 	 * @param capabilities
 	 * @param weightTransformer
 	 */
-	public void teamQuery(ProductAgent productAgent, PhysicalProperty desiredProperty,	ProductState bidPartState, int maxTimeAllowed,
+	public void teamQuery(ProductAgent productAgent, PhysicalProperty desiredProperty,	ProductState bidPartState, double maxTimeAllowed,
 			DirectedSparseGraph<ProductState,ResourceEvent> existingBid, int existingBidTime,
 			// Resource Specific Information below. This is necessary because the ResourceAgentHelper method is outside the RA.
 			// If the teamQuery() was inside the RA, the below information could be accessed locally and doesn't need to be passed in the method.

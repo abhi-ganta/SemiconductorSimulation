@@ -35,7 +35,7 @@ public interface ResourceAgent {
 	 * @param currentTime The current time
 	 */
 	public void teamQuery(ProductAgent productAgent, PhysicalProperty desiredProperty, ProductState bidPartState, 
-			int maxTime, DirectedSparseGraph<ProductState,ResourceEvent> existingBid, int currentTime);
+			double maxTime, DirectedSparseGraph<ProductState,ResourceEvent> existingBid, int currentTime);
 	
 	/** From the PA's scheduling
 	 * @param productAgent the product agent to schedule

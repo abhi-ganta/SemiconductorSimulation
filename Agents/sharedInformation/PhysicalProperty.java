@@ -6,7 +6,9 @@ public class PhysicalProperty {
 
 	private Point point;
 	private String processCompleted;
-	private double estimatedProcessingTime;
+	public double EPT;
+	public double std_EPT;
+	public int n;
 
 	public PhysicalProperty(Point point){
 		this.point = point;
@@ -18,10 +20,12 @@ public class PhysicalProperty {
 		this.processCompleted = processCompleted;
 	}
 	
-	public PhysicalProperty(String processCompleted, double estimatedTime){
+	public PhysicalProperty(String processCompleted, double estimatedTime, double std, int n){
 		this.point = null;
 		this.processCompleted = processCompleted;
-		this.estimatedProcessingTime = estimatedTime;
+		this.EPT = estimatedTime;
+		this.std_EPT = std;
+		this.n= n;
 	}
 
 	/**

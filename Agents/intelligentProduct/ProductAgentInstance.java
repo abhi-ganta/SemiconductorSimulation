@@ -184,27 +184,64 @@ public class ProductAgentInstance implements ProductAgent{
 	//================================================================================
     // Exploring/Bidding (RA Communication)
     //================================================================================
+	
+	public boolean checkBidRequests(double[] bidRequests) {
+		for (double bid:bidRequests) {
+			if(bid != -1) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void startExploration(ProductHistory productHistory, ArrayList<PhysicalProperty> desiredProperties){
 		ProductState currentState = productHistory.getCurrentState();
 		this.newEnvironmentModel = new EnvironmentModel(this,currentState); //New environment model
-		
-		int bidTime = getStartBidTime();
-		
-		//Keep the bidding until enough bids are received (more than 0) or the max bid time is reached
-		while (newEnvironmentModel.isEmpty() && bidTime <= this.getMaxBidTime()){
+		double[] bidRequests = new double[desiredProperties.size()];
+		double minTravel = 0;
+		double maxTravel = 200;
+		int i = 0;
+		for (PhysicalProperty desiredProperty:desiredProperties) {
+			DirectedSparseGraph<ProductState,ResourceEvent> bid = new DirectedSparseGraph<ProductState,ResourceEvent>();
+			bid.addVertex(currentState);
+			bidRequests[i] = getStartBidTime(desiredProperty, 0);
+			i++;
+		}
+		boolean not_done = true;
+		while(not_done) {
 			ResourceAgent contactRA = productHistory.getLastEvent().getEventAgent();
 			int nextTimeQuery = (int) this.simulationSchedule.getTickCount()+ // ask for bids accounting for exploration and planning wait times
 					this.explorationWaitTime+this.planningWaitTime;
-			
-			//For each desired property, send bid requests
-			for (PhysicalProperty desiredProperty:desiredProperties){
+			int j = 0;
+			for (PhysicalProperty desiredProperty:desiredProperties) {
 				DirectedSparseGraph<ProductState,ResourceEvent> bid = new DirectedSparseGraph<ProductState,ResourceEvent>();
 				bid.addVertex(currentState);
-				contactRA.teamQuery(this, desiredProperty, currentState, bidTime, bid, nextTimeQuery);
+				System.out.println(bidRequests[j]);
+				bidRequests[j] += this.getBidTimeChange(desiredProperty, minTravel, maxTravel);
+				contactRA.teamQuery(this, desiredProperty, currentState, bidRequests[j], bid, nextTimeQuery);
+				if (bidRequests[j] > this.getMaxBidTime(desiredProperty, maxTravel)) {
+					bidRequests[j] = -1;
+				}
+				i++;
 			}
-			bidTime+=this.getBidTimeChange();
+			not_done = checkBidRequests(bidRequests);
 		}
+		
+		//Keep the bidding until enough bids are received (more than 0) or the max bid time is reached
+//		while (newEnvironmentModel.isEmpty() && bidTime <= this.getMaxBidTime()){
+//			//ResourceAgent contactRA = productHistory.getLastEvent().getEventAgent();
+//			//int nextTimeQuery = (int) this.simulationSchedule.getTickCount()+ // ask for bids accounting for exploration and planning wait times
+//					//this.explorationWaitTime+this.planningWaitTime;
+//		
+////			//For each desired property, send bid requests
+////			for (PhysicalProperty desiredProperty:desiredProperties){
+////				DirectedSparseGraph<ProductState,ResourceEvent> bid = new DirectedSparseGraph<ProductState,ResourceEvent>();
+////				bid.addVertex(currentState);
+////				double bidTime = getStartBidTime(desiredProperty);
+////				contactRA.teamQuery(this, desiredProperty, currentState, bidTime, bid, nextTimeQuery);
+////			}
+////			bidTime+=this.getBidTimeChange(desiredProperty);
+//		}
 		
 	}
 	
@@ -216,22 +253,22 @@ public class ProductAgentInstance implements ProductAgent{
 	/** The function for the product agent to set the starting bid time
 	 * @return
 	 */
-	private int getStartBidTime() {
-		return 300;
+	private double getStartBidTime(PhysicalProperty desiredProperty, double minTravelTime) {
+		return desiredProperty.EPT - desiredProperty.std_EPT + minTravelTime;
 	}
 	
 	/** Function to increase the bid time
 	 * @return
 	 */
-	private int getBidTimeChange() {
-		return 500;
+	private double getBidTimeChange(PhysicalProperty desiredProperty, double minTravelTime, double maxTravelTime) {
+		return (getMaxBidTime(desiredProperty, maxTravelTime) - getStartBidTime(desiredProperty, minTravelTime))/desiredProperty.n;
 	}
 	
 	/** The function for the product agent to set the max bid time
 	 * @return
 	 */
-	private int getMaxBidTime() {
-		return 10000;
+	private double getMaxBidTime(PhysicalProperty desiredProperty, double maxTravelTime) {
+		return desiredProperty.EPT + desiredProperty.std_EPT + maxTravelTime;
 	}
 	
 	//================================================================================

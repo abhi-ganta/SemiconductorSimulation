@@ -123,7 +123,7 @@ public class ExitAgent implements ResourceAgent{
 	@Override
 	public void teamQuery(ProductAgent productAgent,
 			PhysicalProperty desiredProperty, ProductState currentNode,
-			int maxTime, DirectedSparseGraph<ProductState, ResourceEvent> bid,
+			double maxTime, DirectedSparseGraph<ProductState, ResourceEvent> bid,
 			int currentTime) {
 		
 	}
